@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXUS • Futuro Cargado</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #00f2ff;
+      --secondary: #ff00aa;
+      --dark: #0a0a1f;
+      --glass: rgba(10, 10, 31, 0.4);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Exo 2', sans-serif;
+      background: #000;
+      color: white;
+      overflow-x: hidden;
+      min-height: 100vh;
+      background: radial-gradient(circle at 10% 20%, rgba(0,242,255,0.15) 0%, transparent 20%),
+                  radial-gradient(circle at 90% 80%, rgba(255,0,170,0.15) 0%, transparent 20%),
+                  #000;
+    }
+
+    /* Partículas flotantes */
+    .particles {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 1;
+    }
+    .particle {
+      position: absolute;
+      background: var(--primary);
+      border-radius: 50%;
+      opacity: 0;
+      animation: float 15s infinite linear;
+    }
+    @keyframes float {
+      0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+      10% { opacity: 0.7; }
+      90% { opacity: 0.7; }
+      100% { transform: translateY(-100px) translateX(100px); opacity: 0; }
+    }
+
+    header {
+      position: fixed;
+      top: 0; width: 100%;
+      padding: 1.5rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      background: rgba(0,0,0,0.3);
+      border-bottom: 1px solid rgba(0,242,255,0.2);
+    }
+
+    .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 3px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 2.5rem;
+      font-weight: 600;
+      position: relative;
+      transition: 0.4s;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -8px;
+      left: 0;
+      background: var(--primary);
+      transition: 0.4s;
+    }
+    nav a:hover::after { width: 100%; }
+    nav a:hover { color: var(--primary); }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      z-index: 10;
+      padding: 2rem;
+    }
+
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 6vw;
+      line-height: 1;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, #00f2ff, #ff00aa, #00f2ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200%;
+      animation: gradient 8s ease infinite;
+    }
+    @keyframes gradient {
+      0%,100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      margin: 1.5rem 0;
+      opacity: 0.9;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .glow-btn {
+      display: inline-block;
+      padding: 15px 40px;
+      margin-top: 2rem;
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: white;
+      font-weight: bold;
+      border-radius: 50px;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.5s;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .glow-btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0,242,255,0.3), transparent);
+      transition: 0.7s;
+    }
+    .glow-btn:hover::before { left: 100%; }
+    .glow-btn:hover {
+      background: rgba(0,242,255,0.1);
+      box-shadow: 0 0 30px rgba(0,242,255,0.6);
+      transform: translateY(-5px);
+    }
+
+    .glass-card {
+      background: var(--glass);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      padding: 3rem;
+      margin: 8rem auto;
+      max-width: 1000px;
+      border: 1px solid rgba(0,242,255,0.2);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(0,242,255,0.1) 0%, transparent 70%);
+      animation: rotate 20s linear infinite;
+    }
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    footer {
+      text-align: center;
+      padding: 4rem;
+      background: rgba(0,0,0,0.6);
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 10vw; }
+      nav a { margin-left: 1rem; font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Partículas de fondo -->
+  <div class="particles" id="particles"></div>
+
+  <header>
+    <div class="logo">BREEZE</div>
+    <nav>
+      <a href="#">Inicio</a>
+      <a href="#">Tecnología</a>
+      <a href="#">Proyectos</a>
+      <a href="#">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>EL FUTURO <br> YA ESTÁ AQUÍ</h1>
+      <p>Diseño extremo · Animaciones hipnóticas · 100% HTML + CSS</p>
+      <a href="#explore" class="glow-btn">Entrar al núcleo</a>
+    </div>
+  </section>
+
+  <div class="glass-card" id="explore">
+    <h2>Esto es solo el comienzo</h2>
+    <p style="margin-top: 1.5rem; font-size: 1.3rem; opacity: 0.9;">
+
+      <strong>Solo HTML y CSS puro.</strong>
+    </p>
+  </div>
+
+  <footer>
+    <p>© 2025 • Breeze</p>
+  </footer>
+
+  <script>
+
+    const particlesContainer = document.getElementById('particles');
+    for(let i = 0; i < 50; i++) {
+      const p = document.createElement('div');
+      p.classList.add('particle');
+      p.style.width = p.style.height = Math.random() * 5 + 'px';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.animationDelay = Math.random() * 15 + 's';
+      p.style.animationDuration = 10 + Math.random() * 20 + 's';
+      particlesContainer.appendChild(p);
+    }
+  </script>
+</body>
+</html>

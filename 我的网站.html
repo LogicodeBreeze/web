@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Creative Page</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:linear-gradient(120deg,#8ef6e4,#9896f1,#fbc7d4);
+background-size:300% 300%;
+animation:fondo 12s infinite alternate;
+color:#222;
+overflow-x:hidden;
+}
+
+@keyframes fondo{
+0%{background-position:left}
+100%{background-position:right}
+}
+
+/* NAV */
+
+nav{
+display:flex;
+justify-content:space-between;
+padding:20px 60px;
+font-weight:bold;
+}
+
+nav a{
+text-decoration:none;
+color:#222;
+margin-left:25px;
+}
+
+/* HERO */
+
+.hero{
+height:80vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.hero h1{
+font-size:70px;
+margin:0;
+letter-spacing:2px;
+}
+
+.hero p{
+font-size:20px;
+width:60%;
+}
+
+/* BLOBS */
+
+.blob{
+position:absolute;
+border-radius:50%;
+filter:blur(60px);
+opacity:0.6;
+}
+
+.blob1{
+width:300px;
+height:300px;
+background:#ff9a9e;
+top:10%;
+left:5%;
+}
+
+.blob2{
+width:400px;
+height:400px;
+background:#a18cd1;
+bottom:10%;
+right:5%;
+}
+
+/* SECTIONS */
+
+section{
+padding:100px 15%;
+font-size:20px;
+}
+
+.wave{
+font-size:40px;
+margin-bottom:20px;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:40px;
+font-size:14px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+
+<nav>
+<div>CREATIVE</div>
+
+<div>
+<a href="#">Inicio</a>
+<a href="#">Proyectos</a>
+<a href="#">Ideas</a>
+<a href="#">Contacto</a>
+</div>
+</nav>
+
+<div class="hero">
+
+<h1>Imagina.</h1>
+
+
+<footer>
+
+Diseño creativo — 2026
+
+</footer>
+
+</body>
+</html>
